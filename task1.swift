@@ -4,11 +4,14 @@ func isSimilar(a: String, b: String, n: Int) -> Bool {
     guard a.count == b.count else {
         return false
     }
-    
+
     var counter = 0
-    
-    for index in a.indices {
-        if a[index] != b[index] {
+
+    for (i, j) in zip(a, b) {
+        guard counter < n else {
+            return false
+        }
+        if i != j {
             counter += 1
         }
     }
@@ -18,4 +21,3 @@ func isSimilar(a: String, b: String, n: Int) -> Bool {
 
 print(isSimilar(a: "Conn", b: "Comm", n: 3))
 print(isSimilar(a: "Conn", b: "Comm", n: 1))
-
