@@ -10,7 +10,6 @@ func isRightWord(str: String) -> Bool {
 
             let substr = str[firstIndex...lastIndex]
             
-            print("i: \(i) j: \(j-1) value: \(substr)")
             
             let fi = i + substr.count
             let li = j + substr.count
@@ -19,7 +18,6 @@ func isRightWord(str: String) -> Bool {
             }
             
             if substr == str[str.index(str.startIndex, offsetBy: fi)...str.index(str.startIndex, offsetBy: li)] {
-                print("Success")
                 return false
             }
         }
