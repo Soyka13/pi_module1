@@ -10,7 +10,6 @@ func isRightWord(str: String) -> Bool {
 
             let substr = str[firstIndex...lastIndex]
             
-            
             let fi = i + substr.count
             let li = j + substr.count
             guard fi < str.count, li < str.count else {
@@ -25,4 +24,17 @@ func isRightWord(str: String) -> Bool {
     return true
 }
 
-isRightWord(str: "abacabacbabababa")
+func findCountOfCorrectWords(arrayOfStrings: [String]) -> Int {
+    var count = 0
+    
+    for word in arrayOfStrings {
+        if(isRightWord(str: word)) {
+            count += 1
+        }
+    }
+    
+    return count
+}
+
+findCountOfCorrectWords(arrayOfStrings: ["ababc", "abcacb"])
+
