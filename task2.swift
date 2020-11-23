@@ -30,9 +30,9 @@ print(permutation(s: "abc"))
 
 
 // recursive
-func permutate(str: String, startIndex: Int = 0, endIndex: Int) -> [String]? {
+func permutate(str: String, startIndex: Int = 0) -> [String]? {
     
-    guard !str.isEmpty, startIndex <= endIndex else {
+    guard !str.isEmpty, startIndex <= str.count else {
         return nil
     }
     
@@ -41,13 +41,13 @@ func permutate(str: String, startIndex: Int = 0, endIndex: Int) -> [String]? {
     var arrayStr = Array(str)
     
    
-        if startIndex == endIndex {
+        if startIndex == str.count {
             print(String(arrayStr))
             result.append(String(arrayStr))
         } else {
-            for i in stride(from: startIndex, to: endIndex, by: 1) {
+            for i in stride(from: startIndex, to: str.count, by: 1) {
                 arrayStr.swapAt(startIndex, i)
-                result += permutate(str: String(arrayStr), startIndex: startIndex+1, endIndex: endIndex) ?? []
+                result += permutate(str: String(arrayStr), startIndex: startIndex+1) ?? []
                 arrayStr.swapAt(startIndex, i)
             }
         }
@@ -55,7 +55,4 @@ func permutate(str: String, startIndex: Int = 0, endIndex: Int) -> [String]? {
     return result
 }
 
-let str = "abc"
-
-permutate(str: str, endIndex: str.count)
-
+permutate(str: "abc")
