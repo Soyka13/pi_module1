@@ -1,5 +1,6 @@
 import UIKit
 
+// iterative
 func permutation(s: String) -> [String] {
     var result = [String]()
     result.append(s)
@@ -26,3 +27,35 @@ func permutation(s: String) -> [String] {
 }
 
 print(permutation(s: "abc"))
+
+
+// recursive
+func permutate(str: String, startIndex: Int = 0, endIndex: Int) -> [String]? {
+    
+    guard !str.isEmpty, startIndex <= endIndex else {
+        return nil
+    }
+    
+    var result = [String]()
+    
+    var arrayStr = Array(str)
+    
+   
+        if startIndex == endIndex {
+            print(String(arrayStr))
+            result.append(String(arrayStr))
+        } else {
+            for i in stride(from: startIndex, to: endIndex, by: 1) {
+                arrayStr.swapAt(startIndex, i)
+                result += permutate(str: String(arrayStr), startIndex: startIndex+1, endIndex: endIndex) ?? []
+                arrayStr.swapAt(startIndex, i)
+            }
+        }
+
+    return result
+}
+
+let str = "abc"
+
+permutate(str: str, endIndex: str.count)
+
